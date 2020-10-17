@@ -103,4 +103,6 @@ for i in [0, 1, ]:
         else:
             #print("Hay que cambiar los pesos y el umbral")
             p1 ,p2 , u = pesos(p1, p2, u)
+            d = valor_espe(d, x1, x2)             
+            t, e = calculo(t, e, x1, x2, d, p1, p2, u)
         
