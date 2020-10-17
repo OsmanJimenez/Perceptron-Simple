@@ -1,14 +1,7 @@
 import random
 
-def calculo(t, x1, x2, d):
+def calculo(t, e, x1, x2, d, p1, p2, u):
     
-    #Inicializar los pesos p1 y p2 (Valores aleatorios entre -1 y 1)
-    p1 = random.uniform(-1.0, 1.0)
-    p2 = random.uniform(-1.0, 1.0)
-
-    #Calcular umbral (Valor aleatorio entre -1 y 1)
-    u = random.uniform(-1.0, 1.0)
-
     #Calcular valor entre 0 y 1 (n)
     n = random.uniform(0, 1.0)
 
@@ -65,26 +58,49 @@ def calculo(t, x1, x2, d):
     t += 1
     e1 = e
     um1 = um
-    return (t)
+    return (t,  e)
+
+def valor_espe(d,x1, x2):
+    if x1== 0 and x2==0:
+        d = 0
+    elif x1== 0 and x2==1:
+        d = 0
+    elif x1== 1 and x2==0:
+        d = 0
+    elif x1== 1 and x2==1:
+        d = 1
+    else:
+        print("Error en los pesos, valores deben ser 1 o 0")
+    return(d)
+
+def pesos(p1, p2, u):
+    #Inicializar los pesos p1 y p2 (Valores aleatorios entre -1 y 1)
+    p1 = random.uniform(-1.0, 1.0)
+    p2 = random.uniform(-1.0, 1.0)
+
+    #Calcular umbral (Valor aleatorio entre -1 y 1)
+    u = random.uniform(-1.0, 1.0)
+    
+    return (p1, p2, u)
 
 t = 1
+d = 0
+e = 0
+p1 = 0
+p2 = 0
+u = 0
+p1 ,p2 , u = pesos(p1, p2, u)
 
 for i in [0, 1, ]:
     for j in [0, 1]:
         x1=i
         x2=j
-
-        d = 0
-        if x1== 0 and x2==0:
-            d = 0
-        elif x1== 0 and x2==1:
-            d = 0
-        elif x1== 1 and x2==0:
-            d = 0
-        elif x1== 1 and x2==1:
-            d = 1
+        
+        if e == 0:
+            #print("No cambiar los pesos, ni el umbral")
+            d = valor_espe(d, x1, x2)             
+            t, e = calculo(t, e, x1, x2, d, p1, p2, u)
         else:
-            print("Error en los pesos, valores deben ser 1 o 0")
-            
-        t = calculo(t, x1, x2, d)
+            #print("Hay que cambiar los pesos y el umbral")
+            p1 ,p2 , u = pesos(p1, p2, u)
         
