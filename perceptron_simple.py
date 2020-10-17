@@ -86,7 +86,7 @@ def pesos(p1, p2, u):
 
 t = 1
 d = 0
-e = 0
+e = 1
 p1 = 0
 p2 = 0
 u = 0
@@ -97,10 +97,15 @@ um = 1
 while um_lis[-1] != um or um_lis[-2] != um or um_lis[-3] != um or um_lis[-4] != um :
     for i in [0, 1, ]:
         for j in [0, 1]:
+                        
             x1=i
             x2=j
             
-            if e == 0:
+            if um_lis[-1] == um and um_lis[-2] == um and um_lis[-3] == um and um_lis[-4] == um :
+                break
+                
+            elif e == 0:
+                
                 #print("No cambiar los pesos, ni el umbral")
                 d = valor_espe(d, x1, x2)             
                 t, e, um = calculo(t, e, um, x1, x2, d, p1, p2, u)
@@ -109,7 +114,7 @@ while um_lis[-1] != um or um_lis[-2] != um or um_lis[-3] != um or um_lis[-4] != 
                 p1 ,p2 , u = pesos(p1, p2, u)
                 d = valor_espe(d, x1, x2)             
                 t, e, um = calculo(t, e, um, x1, x2, d, p1, p2, u)
-                
+                    
             
 print(um)
 print(um_lis, "\n")
