@@ -1,9 +1,7 @@
 import random
 
-
-
-def calculo(x1, x2, d, i):
-
+def calculo(t, x1, x2, d):
+    
     #Inicializar los pesos p1 y p2 (Valores aleatorios entre -1 y 1)
     p1 = random.uniform(-1.0, 1.0)
     p2 = random.uniform(-1.0, 1.0)
@@ -42,11 +40,11 @@ def calculo(x1, x2, d, i):
     #Calcular nuevo umbral
     um = u - (n * e)
 
-    
+
     
     print("\n", 
         "################################","\n", 
-        "Iteración ", i,"\n", 
+        "Iteración ", t,"\n", 
         "################################","\n",
         "x1:",x1,"\n", 
         "x2:",x2,"\n",
@@ -63,55 +61,30 @@ def calculo(x1, x2, d, i):
         "pe1:",pe1,"\n",
         "pe2:",pe2,"\n",
         "um:",um,"\n",
-        "um2:",um2,"\n",
-        "um3:",um3,"\n",
-        "um4:",um4,"\n",
         )
-    
+    t += 1
     e1 = e
     um1 = um
-    
+    return (t)
 
+t = 1
 
+for i in [0, 1, ]:
+    for j in [0, 1]:
+        x1=i
+        x2=j
 
-i =1
-e = 7
-e1 = 1
-e2 = 2
-e3 = 3
-e4 = 4
-
-um = 0
-um1 = 6
-um2 = 2
-um3 = 3
-um4 = 4
-
-while e1 != 0 or e2 != 0 or e3 != 0 or e4 != 0:
-    while um1 != um or um2 != um or um3 != um or um4 != um:
-        if e != 0:
-            
-            # Definir x1 y x2, segun la compuerta AND 
-            x1 = 1
-            x2 = 0
-            
-            #Calcular valor esperado segun compuerta AND
+        d = 0
+        if x1== 0 and x2==0:
             d = 0
-            if x1== 0 and x2==0:
-                d = 0
-            elif x1== 0 and x2==1:
-                d = 0
-            elif x1== 1 and x2==0:
-                d = 0
-            elif x1== 1 and x2==1:
-                d = 1
-            else:
-                print("Error en los pesos, valores deben ser 1 o 0")
-                
-            calculo(x1, x2, d)
-
+        elif x1== 0 and x2==1:
+            d = 0
+        elif x1== 1 and x2==0:
+            d = 0
+        elif x1== 1 and x2==1:
+            d = 1
         else:
-            print("fin del programa")
+            print("Error en los pesos, valores deben ser 1 o 0")
             
-
-    
+        t = calculo(t, x1, x2, d)
+        
