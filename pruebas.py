@@ -15,7 +15,7 @@ i = calculo(i)
 
 print(i)
 '''
-def calculo(i, d):
+'''def calculo(i, d):
     print(i, "y", d)
     d+=3
     i+=1
@@ -25,6 +25,15 @@ i = 1
 for d in [0, 1, ]:
     for j in [0, 1]:
         i,d = calculo(i ,d)
+'''
 
+variable = 10
+vamos = 6
+vam = 7
+while variable > 0:              
+   variable = variable -1
+   if variable == 2 and vamos == 6 and vam == 7:
+      break
+   print ('Actual valor de variable:', variable)
         
     

@@ -1,6 +1,6 @@
 import random
 
-def calculo(t, e, x1, x2, d, p1, p2, u):
+def calculo(t, e, um, x1, x2, d, p1, p2, u):
     
     #Calcular valor entre 0 y 1 (n)
     n = random.uniform(0, 1.0)
@@ -58,7 +58,8 @@ def calculo(t, e, x1, x2, d, p1, p2, u):
     t += 1
     e1 = e
     um1 = um
-    return (t,  e)
+    um_lis.append(um)
+    return (t,  e, um)
 
 def valor_espe(d,x1, x2):
     if x1== 0 and x2==0:
@@ -90,19 +91,26 @@ p1 = 0
 p2 = 0
 u = 0
 p1 ,p2 , u = pesos(p1, p2, u)
+um_lis = [0, 0, 0, 1]
+um = 1
 
-for i in [0, 1, ]:
-    for j in [0, 1]:
-        x1=i
-        x2=j
-        
-        if e == 0:
-            #print("No cambiar los pesos, ni el umbral")
-            d = valor_espe(d, x1, x2)             
-            t, e = calculo(t, e, x1, x2, d, p1, p2, u)
-        else:
-            #print("Hay que cambiar los pesos y el umbral")
-            p1 ,p2 , u = pesos(p1, p2, u)
-            d = valor_espe(d, x1, x2)             
-            t, e = calculo(t, e, x1, x2, d, p1, p2, u)
+while um_lis[-1] != um or um_lis[-2] != um or um_lis[-3] != um or um_lis[-4] != um :
+    for i in [0, 1, ]:
+        for j in [0, 1]:
+            x1=i
+            x2=j
+            
+            if e == 0:
+                #print("No cambiar los pesos, ni el umbral")
+                d = valor_espe(d, x1, x2)             
+                t, e, um = calculo(t, e, um, x1, x2, d, p1, p2, u)
+            else:
+                #print("Hay que cambiar los pesos y el umbral")
+                p1 ,p2 , u = pesos(p1, p2, u)
+                d = valor_espe(d, x1, x2)             
+                t, e, um = calculo(t, e, um, x1, x2, d, p1, p2, u)
+                
+            
+print(um)
+print(um_lis, "\n")
         
