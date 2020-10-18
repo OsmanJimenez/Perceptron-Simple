@@ -35,5 +35,8 @@ while variable > 0:
    if variable == 2 and vamos == 6 and vam == 7:
       break
    print ('Actual valor de variable:', variable)
+   
+   
+print(str(round(2.98767, 2)))
         
     

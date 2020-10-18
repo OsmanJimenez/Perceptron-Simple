@@ -1,7 +1,6 @@
 import random
 
-def calculo(t, e, um, x1, x2, d, p1, p2, u):
-    n = random.uniform(0, 1.0)
+def calculo(t, e, um, x1, x2, d, p1, p2, u, n):
     y = ( p1 * x1) + (p2 * x2) - u
     f = 0
     e = 0
@@ -58,22 +57,24 @@ p1 ,p2 , u = pesos(p1, p2, u)
 um_lis = [0, 0, 0, 1]
 um = 1
 
+n = random.uniform(0, 1.0)
+
 while um_lis[-1] != um or um_lis[-2] != um or um_lis[-3] != um or um_lis[-4] != um :
     for i in [0, 1, ]:
         for j in [0, 1]:
                         
             x1=i
-            x2=j
+            x2=j  
             
             if um_lis[-1] == um and um_lis[-2] == um and um_lis[-3] == um and um_lis[-4] == um :
                 break       
             elif e == 0:
                 d = valor_espe(d, x1, x2)             
-                t, e, um = calculo(t, e, um, x1, x2, d, p1, p2, u)
+                t, e, um = calculo(t, e, um, x1, x2, d, p1, p2, u, n)
             else:
                 p1 ,p2 , u = pesos(p1, p2, u)
                 d = valor_espe(d, x1, x2)             
-                t, e, um = calculo(t, e, um, x1, x2, d, p1, p2, u)
+                t, e, um = calculo(t, e, um, x1, x2, d, p1, p2, u, n)
                     
             
 print(um)
