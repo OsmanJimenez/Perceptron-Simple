@@ -38,5 +38,11 @@ while variable > 0:
    
    
 print(str(round(2.98767, 2)))
+
+
+a = 1.0
+
+print (int(a))
+
         
     
