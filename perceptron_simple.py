@@ -72,12 +72,16 @@ while um_lis[-1] != um or um_lis[-2] != um or um_lis[-3] != um or um_lis[-4] != 
             x2=j  
             
             if um_lis[-1] == um and um_lis[-2] == um and um_lis[-3] == um and um_lis[-4] == um :
-                break       
+                    break       
             elif e == 0:
                 d, pat = valor_espe(d, pat, x1, x2)             
                 t, e, um = calculo(t, e, um, x1, x2, d, p1, p2, u, n, pat)
+                if e != 0 :
+                    p1 ,p2 , u = pesos(p1, p2, u)
+                    d, pat = valor_espe(d, pat, x1, x2)             
+                    t, e, um = calculo(t, e, um, x1, x2, d, p1, p2, u, n, pat)
             else:
-                while e != 0:
+                while e != 0 :
                     p1 ,p2 , u = pesos(p1, p2, u)
                     d, pat = valor_espe(d, pat, x1, x2)             
                     t, e, um = calculo(t, e, um, x1, x2, d, p1, p2, u, n, pat)
